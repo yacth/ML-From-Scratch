@@ -80,7 +80,8 @@ class BernoulliNaiveBayes:
         self.likelihood = np.zeros((self.C,self.D),dtype=np.float64)
         self.N1 = sum(self.y)
 
-    def fit(self,X,y):        # Does the fit by calculating the prior and the likelihood of the training data
+    def fit(self,X,y):        
+        # Does the fit by calculating the prior and the likelihood of the training data
         for c in self.classes:
             X_c = X[c == y]
             X_c_sum = np.sum(X_c, axis=0)
@@ -97,7 +98,8 @@ class BernoulliNaiveBayes:
             posteriors.append(posterior)
         return self.classes[np.argmax(posteriors)]     
     
-     def predict(self,X_test): #Gives the predicted labels for dataset
+     def predict(self,X_test): 
+        #Gives the predicted labels for dataset
         y_pred = [self._classify(x) for x in X_test]
         return y_pred
    
